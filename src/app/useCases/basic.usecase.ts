@@ -5,7 +5,11 @@ import type { LoggerAdapter } from "../../domain/adapters/logger.adapter";
 
 export interface IUCRequest<T> {
   data: T
-  payloadAuth?: any
+  payloadAuth?: any,
+  metas?: {
+    limit?: number;
+    page?: number;
+  };
 }
 
 export interface IUseCase<TInput, TOutput> {
