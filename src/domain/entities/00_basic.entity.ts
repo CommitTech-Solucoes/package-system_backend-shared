@@ -19,7 +19,7 @@ export class BasicEntity<T extends BasicModel> {
   private updaters: PropUpdater[];
 
   constructor(
-    props: Replace<T, { createdAt?: Date }> ,
+    props: Replace<Omit<T, "id">, { createdAt?: Date }> ,
     id?: string,
     updaters?: PropUpdater[]
   ) {
@@ -33,7 +33,7 @@ export class BasicEntity<T extends BasicModel> {
     this.props = this.initializeProps(props);
   }
 
-  private initializeProps(props: Replace<T, { createdAt?: Date }>): T {
+  private initializeProps(props: Replace<Omit<T, "id">, { createdAt?: Date }>): T {
     const normalized = this.normalizeNullables(props);
     return {
       ...normalized,
